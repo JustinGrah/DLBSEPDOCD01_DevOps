@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h2= ticket.title
+  p
+    strong Ticket-ID:
+    |  #{ticket.id}
+  p
+    strong Beschreibung:
+    |  #{ticket.description}
+  p
+    strong Priorität:
+    |  #{ticket.priority}
+  p
+    strong Status:
+    |  #{ticket.status}
+
+  if ticket.status !== "Geschlossen"
+    form(method="post", action=`/tickets/${ticket.id}/close`)
+      button(type="submit") Ticket schließen
+
+  a(href="/") Zurück zur Übersicht

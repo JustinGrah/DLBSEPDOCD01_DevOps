@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h2 Ticketübersicht
+
+  if tickets.length
+    table
+      thead
+        tr
+          th ID
+          th Titel
+          th Priorität
+          th Status
+      tbody
+        each ticket in tickets
+          tr
+            td= ticket.id
+            td
+              a(href=`/tickets/${ticket.id}`)= ticket.title
+            td= ticket.priority
+            td= ticket.status
+  else
+    p Es sind keine Tickets vorhanden.

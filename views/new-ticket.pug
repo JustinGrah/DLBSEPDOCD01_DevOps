@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h2 Neues Ticket erstellen
+
+  form(method="post", action="/tickets")
+    label(for="title") Titel
+    input#title(type="text", name="title", required, maxlength="120")
+
+    label(for="description") Beschreibung
+    textarea#description(name="description", required, maxlength="2000")
+
+    label(for="priority") Priorität
+    select#priority(name="priority", required)
+      option(value="Niedrig") Niedrig
+      option(value="Mittel", selected) Mittel
+      option(value="Hoch") Hoch
+
+    button(type="submit") Ticket erstellen
