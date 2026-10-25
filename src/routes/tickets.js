@@ -12,8 +12,9 @@ router.get("/tickets/new", (req, res) => {
   res.render("new-ticket");
 });
 
+
 router.post("/tickets", (req, res) => {
-  const { title, description, priority } = req.body;
+  const { title, description, priority } = req.body || {};
 
   if (
     typeof title !== "string" ||
@@ -25,7 +26,12 @@ router.post("/tickets", (req, res) => {
     return res.status(400).send("Ungültige Ticketdaten.");
   }
 
-  const ticket = tickets.create({ title, description, priority });
+  const ticket = tickets.create({
+    title,
+    description,
+    priority
+  });
+
   res.redirect(`/tickets/${ticket.id}`);
 });
 
