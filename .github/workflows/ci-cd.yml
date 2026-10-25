@@ -65,7 +65,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/dlbsepdocd01_devops_grah
+          images: ghcr.io/justingrah/dlbsepdocd01_devops
 
       - name: Image bauen und veröffentlichen
         uses: docker/build-push-action@v6
@@ -73,5 +73,5 @@ jobs:
           context: .
           push: true
           tags: |
-            ghcr.io/dlbsepdocd01_devops_grah:latest
-            ghcr.io/dlbsepdocd01_devops:${{ github.sha }}
+            ghcr.io/justingrah/dlbsepdocd01_devops:latest
+            ghcr.io/justingrah/dlbsepdocd01_devops:${{ github.sha }}
